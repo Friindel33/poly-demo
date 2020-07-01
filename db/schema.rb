@@ -14,8 +14,11 @@ ActiveRecord::Schema.define(version: 2020_07_01_160155) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
+    t.string "commentable_type"
+    t.integer "commentable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "images", force: :cascade do |t|
